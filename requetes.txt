@@ -1,0 +1,24 @@
+CREATE TABLE t_utilisateurs
+(
+    id INT PRIMARY KEY NOT NULL,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(255),
+    date_naissance DATE,
+    pays VARCHAR(255),
+    ville VARCHAR(255),
+    code_postal VARCHAR(5),
+    nombre_achat INT
+)
+
+INSERT INTO t_utilisateurs (id, nom, prenom, email, date_naissance, pays, ville, code_postal, nombre_achat) VALUES (NULL, 'Chirac', 'Jacques', 'jacques.chirac@france.fr', '1931-02-02', 'France', 'Paris', '75019', NULL);
+
+INSERT INTO t_utilisateurs (id, nom, prenom, email, date_naissance, pays, ville, code_postal, nombre_achat) VALUES (NULL, 'Chirac', 'Jacques', 'jacques.chirac@france.fr', '1931-02-02', 'France', 'Bourges', '18000', NULL);
+
+SELECT * FROM t_utilisateurs ORDER BY nom ASC
+
+SELECT nom, prenom FROM t_utilisateurs
+
+DELETE FROM t_utilisateurs WHERE nom='chirac'
+
+SELECT * FROM t_utilisateurs WHERE ville='paris'
