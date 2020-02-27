@@ -1,164 +1,295 @@
 <!doctype html>
 <html lang="fr">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>SQL cours</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- <!-- Favicons -->
-<link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-<link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
-<link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
-<link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
-<meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
-<meta name="theme-color" content="#563d7c">
-
-
-    <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  <title>SQL cours</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" href="/docs/4.4/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+  <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+  <link rel="manifest" href="/docs/4.4/assets/img/favicons/manifest.json">
+  <link rel="mask-icon" href="/docs/4.4/assets/img/favicons/safari-pinned-tab.svg" color="#563d7c">
+  <link rel="icon" href="/docs/4.4/assets/img/favicons/favicon.ico">
+  <meta name="msapplication-config" content="/docs/4.4/assets/img/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#563d7c">
+  
+  
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
       }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-  <a class="navbar-brand" href="#">SQL cours</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Lien</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Désactivé</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu déroulant</a>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" href="#">Action 1</a>
-          <a class="dropdown-item" href="#">Autre action</a>
-          <a class="dropdown-item" href="#">Etc.</a>
-        </div>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Cherchez" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
-    </form>
-  </div>
-</nav>
-
-<main role="main">
-
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1 class="display-3">SQL cours</h1>
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ad dolorum rem, provident aspernatur impedit consectetur error exercitationem atque, ea modi vel! Reprehenderit, commodi? Hic possimus commodi quidem id? Dolorem.</p>
-      <p><a class="btn btn-primary btn-lg" href="#" role="button">VOIR</a></p>
+    }
+  </style>
+  <!-- Custom styles for this template -->
+  <link href="jumbotron.css" rel="stylesheet">
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">SQL cours</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Accueil <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Lien</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Désactivé</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu déroulant</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" href="#">Action 1</a>
+            <a class="dropdown-item" href="#">Autre action</a>
+            <a class="dropdown-item" href="#">Etc.</a>
+          </div>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Cherchez" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+      </form>
     </div>
-  </div>
-
-  <div class="container">
-    <!-- Example row of columns -->
-    <div class="row">
-      <div class="col-md-4">
-        <h2>MySQL</h2>
-        <ul>
+  </nav>
+  
+  <main role="main">
+    
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1 class="display-3">SQL cours</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil ad dolorum rem, provident aspernatur impedit consectetur error exercitationem atque, ea modi vel! Reprehenderit, commodi? Hic possimus commodi quidem id? Dolorem.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">VOIR</a></p>
+      </div>
+    </div>
+    
+    <div class="container"> <!-- début container -->
+      
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>MySQL</h2>
+          <ul>
             <li>MySQL peut s'utiliser en ligne de commande (Bash ou CMDR) ou avec une interface graphique (php MyAdmin)</li>
             <li>Pour se connecter à MySQL en ligne de commande on utilise <code>mysql -u utilisateur -p</code></li>
-        </ul>
-        <p><a class="btn btn-secondary" href="https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql/1959969-installez-mysql" role="button">+ sur la ligne de cmd</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>En résumé</h2>
-        <ul>
+          </ul>
+          <p><a class="btn btn-secondary" href="https://openclassrooms.com/fr/courses/1959476-administrez-vos-bases-de-donnees-avec-mysql/1959969-installez-mysql" role="button">+ sur la ligne de cmd</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>En résumé</h2>
+          <ul>
             <li>MySQL est un <abbr>SGBDR</abbr> <strong>Système de Gestion de Base de Données Relationnelles</strong></li>
             <li>Le langage SQL est utilisé pour la communication entre le client et le serveur</li>
             <li>Dans une BDD les données sont représentées sous forme de tables</li>
             <li>Dans une table nous avons des colonnes, chaque données sera introduite sous forme de ligne dans la table</li>
-        </ul>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-      </div>
-      <div class="col-md-4">
-        <h2>SGBDR / SGBD</h2>
-       <ul>
-           <li>Un système qui permet de gérer une BDD /// CRUD create, read, update, delete</li>
-           <li>Le logiciel client permet de dialoguer avec le serveur avec le langage SQL</li>
-           <li><abbr>MySQL</abbr> Structured Query Language</li>
-           <li>Date de naissance 1994</li>
-           <li>Open Source</li>
-           <li>Concurrents : Oracle, MS Access SQLite PostgreSQL</li>
-       </ul>
-        <p><a class="btn btn-secondary" href="#" role="button">Voir</a></p>
-      </div>
-    </div>
+          </ul>
+          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>SGBDR / SGBD</h2>
+          <ul>
+            <li>Un système qui permet de gérer une BDD /// CRUD create, read, update, delete</li>
+            <li>Le logiciel client permet de dialoguer avec le serveur avec le langage SQL</li>
+            <li><abbr>MySQL</abbr> Structured Query Language</li>
+            <li>Date de naissance 1994</li>
+            <li>Open Source</li>
+            <li>Concurrents : Oracle, MS Access SQLite PostgreSQL</li>
+          </ul>
+          <p><a class="btn btn-secondary" href="#" role="button">Voir</a></p>
+        </div>
+      </div> <!-- /row -->
+      
+      <hr>
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Requête de base</h2>
+          <ul>
+            <li>Créer une BDD : <code>CREATE DATABASE basetest CHARACTER SET 'utf8';</code></li>
+            <li>Supprimer une BDD : <code>DROP DATABASE IF EXISTS basetest</code></li>
+            <li>Créer une table : <code>CREATE TABLE t_utilisateurs
+              (id INT PRIMARY KEY NOT NULL,
+              nom VARCHAR(100),
+              prenom VARCHAR(100),
+              email VARCHAR(255),
+              date_naissance DATE,
+              pays VARCHAR(255),
+              ville VARCHAR(255),
+              code_postal VARCHAR(5),
+              nombre_achat INT);</code>
+            </li>
+            <li>Insérer dans une table : <code>INSERT INTO t_utilisateurs (id, nom, prenom, email, date_naissance, pays, ville, code_postal, nombre_achat) VALUES
+              (NULL, 'Chirac', 'Jacques', 'jacques.chirac@france.fr', '1931-02-02', 'France', 'Paris', '75019', NULL);</code>
+            </li>
+            <li>Afficher le contenu d'une table <code>SELECT * FROM t_utilisateurs</code></li>
+            <li>Effacer un enregistrement <code>DELETE FROM t_utilisateurs WHERE nom='chirac'</code></li>
+            <li>Observer la structure d'une table <code>DESC t_utilisateurs</code></li>
+          </ul>
+          <p><a class="btn btn-secondary" href="#suite" role="button">Autres requêtes</a></p>
+        </div>
+      </div> <!-- /row -->
+          
+      <hr>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Les types de données</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Type de champ</th>
+                <th scope="col">Description</th>
+                <th scope="col">Contexte</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">VARCHAR</th>
+                <td>Chaîne (jusqu'à 256 caractères)</td>
+                <td>Pour enregistrer un pseudo, un email, le titre d'un produit ou d'un article de blog</td>
+              </tr>
+              <tr>
+                <th scope="row">TEXT</th>
+                <td>Chaîne de caractères (illimité)</td>
+                <td>Pour un contenu textuel long, un article de blog</td>
+              </tr>
+              <tr>
+                <th scope="row">INT</th>
+                <td>Numérique</td>
+                <td>Pour un identifiant, un prix, un code, un code postal, le nombre de produits en stock etc...</td>
+              </tr>
+              <tr>
+                <th scope="row">DATE</th>
+                <td>Date</td>
+                <td>Pour la date d'un enregistrement (une inscription), la date d'une commande etc...</td>
+              </tr>
+              <tr>
+                <th scope="row">ENUM</th>
+                <td>Une liste (une énumération)</td>
+                <td>Pour proposer une liste de termes ex. : "Madame", "Monsieur"</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> <!-- /row -->
+          
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Les identifiants (clé primaire - PK primary key</h2>
+          <p>Les identifiants sont des champs (colonnes) un peu particuliers car ils ne décrivent pas le sujet (ce n'est pas une des caractéristiques du sujet) mais ce sont des colonnes (champs) systématiquement présent dans chaque table et ce en première position. Chaque table possède une colonne (champ) identifiant. Nous appellerons cela une clé primaire (PK). Par exemple, nous pourrons l'appeler "id" ou encore "idProduit" pour la table produit, et "idMembre" pour la table membre. Il s'agit d'une liste numérotée permettant de différencier chaque enregistrement de manière unique. Le produit "tshirt rouge" deviendra (par exemple) le produit n°396 "tshirt rouge". Pour éviter de choisir le numéro et faire des erreurs nous demanderons à le générer automatiquement avec l'Auto_Increment.</p>
+        </div>
+        <div class="col-md-6">
+          <h2>Auto_Increment</h2>
+          <p>Auto_Increment est une option permettant de générer un numéro unique dans une colonne (champ) de type clé primaire (identifiant). Par conséquent, retenez bien que le 1er champ de chaque table sera systématiquement un "id" qui sera PK (Primary Key) et AI (Auto_Increment).</p>
+        </div>
+      </div> <!-- /row -->
+              
+      <div class="row">
+        <div class="col-md-6">
+          <h2>NULL / NOT NULL</h2>
+          <p>Dans chaque champ, nous pourrons indiquer si nous acceptons les valeurs NULL ou non (NOT NULL)</p>
+          <p>NULL est un type de valeur en informatique évitant de laisser un champ vide si nous n'avons pas d'informations à y déposer</p>
+        </div>
+        <div class="col-md-6">
+          <h2>Les relations</h2>
+          <p>Il arrive parfois que les sujets interagissent entre eux</p>
+          <p>Exemple : 1 membre commande 1 produit (ou 1 produit est commandé par 1 membre), nous devrons enregistrer
+            l'information dans 1 table commande.</p>
+          <p>Autre exemple : 1 conducteur conduit 1 véhicule (ou 1 véhicule est conduit par 1 conducteur). il nous faudra une
+              table permettant de préciser quel conducteur va avec quel véhicule.</p>      
+        </div>
+      </div> <!-- /row -->
 
-    <hr>
-    <div class="row">
-      <div class="col-md-6">
-        <h2>Requête de base</h2>
-        <ul>
-          <li>Créer une BDD : <code>CREATE DATABASE basetest CHARACTER SET 'utf8';</code></li>
-          <li>Supprimer une BDD : <code>DROP DATABASE IF EXISTS basetest</code></li>
-          <li>Créer une table : <code>CREATE TABLE t_utilisateurs
-          (id INT PRIMARY KEY NOT NULL,
-          nom VARCHAR(100),
-          prenom VARCHAR(100),
-          email VARCHAR(255),
-          date_naissance DATE,
-          pays VARCHAR(255),
-          ville VARCHAR(255),
-          code_postal VARCHAR(5),
-          nombre_achat INT);</code></li>
-          <li>Insérer dans une table : <code>INSERT INTO t_utilisateurs (id, nom, prenom, email, date_naissance, pays, ville, code_postal, nombre_achat) VALUES
-          (NULL, 'Chirac', 'Jacques', 'jacques.chirac@france.fr', '1931-02-02', 'France', 'Paris', '75019', NULL);</code></li>
-          <li>Afficher le contenu d'une table <code>SELECT * FROM t_utilisateurs</code></li>
-          <li>Afficher et trier <code>SELECT * FROM t_utilisateurs ORDER BY nom ASC</code></li>
-          <li>Effacer un enregistrement <code>DELETE FROM t_utilisateurs WHERE nom='chirac'</code></li>
-        </ul>
-      </div>
-      <div class="col-md-6">
-        <h2>Types de données</h2>
-      </div>
-    </div>
+      <div class="row" id="suite">
+        <div class="col-md-12">
+          <h2>Les requêtes (suite)</h2>
+          <ul>
+            <li>Afficher et trier <code>SELECT * FROM employes ORDER BY nom ASC</code></li>
+            <li>Une condition avec WHERE <code>SELECT nom, prenom FROM employes WHERE service='informatique'</code></li>
+            <li>Tri multiple : <code>SELECT service, nom, prenom FROM employes ORDER BY service ASC nom ASC</code></li>            
+            <li>Le mot clef : BETWEEN (entre) <code>SELECT nom, prenom, date_embauche FROM employes WHERE date_embauche BETWEEN '2006-01-01' AND '2010-12-31'</code></li>
+            <li>Une fonction prédéfinie avec ses parenthèses : CURDATE() (date courante) <code>SELECT nom, prenom, date_embauche FROM employes WHERE date_embauche BETWEEN '2006-01-01' AND CURDATE()</code></li>
+            <li>Le mot clef LIKE <code>SELECT prenom FROM employes WHERE prenom LIKE 's%'</code> ou <code>SELECT prenom FROM employes WHERE prenom LIKE '%-%'</code></li>
+            <li>= "est égal"</li>
+            <li>> "strictement supérieur, >= "supérieur ou égal"</li>
+            <li>< "strictement inférieur, <= " inférieur ou égal"</li>
+            <li><> ou != "est différent" <code>SELECT nom, prenom, service FROM employes WHERE service !='informatique'</code></li>
+            <li class="bg-warning w-25">Limiter</li>
+            <li>Limiter les résultats : LIMIT <code>SELECT nom, prenom, service, salaire FROM employes ORDER BY salaire DESC LIMIT 0,3</code> <span class="small">(le 1er chiffre précise l'enregistrement de départ, le 2nd chiffre indique le nbr de résultats)</span></li>
+            <li class="bg-warning w-25">Calculer</li>
+            <li>Faire des calculs : <code>SELECT nom, prenom, salaire*12 FROM employes</code></li>
+            <li>Le mot clef AS permet de définir un ALIAS : <code>SELECT nom, prenom, salaire*12 AS salaire_annuel FROM employes</code></li>
+            <li>Somme d'une colonne avec SUM() : <code>SELECT SUM(salaire*12) FROM employes</code></li>
+            <li>Calculer une moyenne avec AVG() : <code>SELECT AVG(salaire) FROM employes</code></li>
+            <li>Arrondir un résultat avec ROUND() : <code>SELECT ROUND(AVG(salaire)) FROM employes</code></li>
+            <li>Compter avec COUNT(*) : <code>SELECT COUNT(*) FROM employes WHERE sexe='f'</code></li>
+          </ul>
+        </div>
+      </div> <!-- /row -->
+      
+      <hr>
+      <h5>Requêtes imbriquées</h5>
+      <ul>
+        <li>Isoler une valeur minimum/maximum avec MIN() ou MAX() : <code>SELECT MIN(salaire) FROM employes</code></li>
+        <li>Requêtes imbriquée : <code>SELECT prenom, salaire FROM employes WHERE salaire = (SELECT MIN(salaire) FROM employes)</code></li>
+      </ul>
+      <h5>Conditions multiples</h5>
+      <ul>
+        <li>Avec plusieurs valeurs avec le mot clef IN : <code>SELECT nom, prenom, service FROM employes WHERE service IN('comptabilité', 'informatique')</code></li>
+        <li>Avec le mot-clef NOT IN : <code>SELECT nom, prenom, service FROM employes WHERE service NOT IN('comptabilité', 'informatique')</code> <span class="small">!= permet d'exclure une seule valeur // NOT IN permet d'exlure plusieurs valeurs</span></li>
+        <li>Plusieurs conditions avec différents champs et différentes valeurs : <code>SELECT nom, prenom, service, salaire FROM employes WHERE service='commercial' AND salaire<=2000</code></li>
+        <li>Ordre de priorité sur les conditions NAD et OR : <code>SELECT nom, prenom, service, salaire FROM employes WHERE service='production' AND (salaire=1900 OR salaire=2300)</code> <span class="small font-italic">Pour garantir l'ordre naturel de lecture (de la gauche vers la droite), nous utiliserons les parenthèses</span></li>
+        <li>Les regroupements avec GROUP BY : <code>SELECT service, COUNT(*) AS nombre FROM employes GROUP BY service;</code></li>
+        <li>Regroupement avec une condition HAVING COUNT(*) > 2</li>
+      </ul>
 
-  </div> <!-- /container -->
-
-</main>
-
-<footer class="container">
-  <p>&copy; Company 2017-2019</p>
-</footer>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  </body>
+      <hr>
+      <div class="row mt-4 mb-4">
+        <div class="col-md-12">
+          <h5>Requêtes d'insertion</h5>
+          <ul>
+            <li>INSERT :
+              <code>INSERT INTO employes (prenom, nom, sexe, service, date_embauche, salaire) VALUES ('alexis', 'richy', 'm', 'informatique', '2011-12-28', 1800);</code>
+            </li>
+            <li>INSERT (autre méthode) : 
+              <code>INSERT INTO employes VALUES (NULL, 'samia', 'ouali', 'f', 'informatique', '2020-01-28', 2500)</code>
+            </li>
+          </ul>
+        </div>
+      </div><!-- /row -->
+              
+              
+    </div> <!-- fin container -->
+                
+  </main>
+              
+  <footer class="container">
+    <p>&copy; Company 2017-2019</p>
+  </footer>
+              
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+              
+</body>
 </html>
