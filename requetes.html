@@ -1,3 +1,5 @@
+<!------------------------------------------------- COURS SQL --------------------------------------------------->
+
 CREATE TABLE t_utilisateurs
 (
     id INT PRIMARY KEY NOT NULL,
@@ -86,6 +88,119 @@ SELECT nom, prenom, service, salaire FROM employes ORDER BY salaire DESC LIMIT 0
 
 SELECT nom, prenom, salaire*12 FROM employes
 
-SELECT prenom, salaire FROM employes WHERE salaire = (SELECT MIN(salaire) FROM employes)
+SELECT prenom, salaire FROM employes WHERE salaire = (SELECT MIN(salaire) FROM employes);
 
-SELECT nom, prenom, service FROM employes WHERE service IN('comptabilité', 'informatique')
+SELECT nom, prenom, service FROM employes WHERE service IN('comptabilité', 'informatique');
+
+
+<!----------------------------------------- EXERCICE ---------------------------------------->
+
+1. Afficher la profession de l'employé 547.
+    SELECT service, nom, prenom FROM employes WHERE id_employes = 547;
+
+2. Afficher la date d'embauche de : Amandine.
+    SELECT date_embauche, prenom FROM employes WHERE prenom = 'amandine';
+
+3. Afficher le nombre de commerciaux.
+    SELECT COUNT(*) AS 'nombre_employes' FROM employes WHERE service = 'commercial';
+
+4. Afficher le coût des commerciaux sur 1 année.
+    SELECT SUM(salaire*12) FROM employes WHERE service = 'commercial';
+
+5. Afficher le salaire moyen par service.
+    SELECT service, AVG(salaire) FROM employes GROUP BY service;
+    SELECT service, ROUND(AVG(salaire)) FROM employes GROUP BY service;
+
+6. Afficher le nombre de recrutements sur l'année 2010.
+    SELECT COUNT(*) FROM employes WHERE date_embauche BETWEEN '2010-01-01' AND '2010-12-31';
+    SELECT COUNT(*) AS 'nbr_recrutement_2010' FROM employes WHERE date_embauche LIKE '2010%';
+    SELECT COUNT(*) AS 'nbr_recrutement_2010' FROM employes WHERE date_embauche >= '2010-01-01' AND date_embauche <= '2010-12-31';
+
+7. Augmenter le salaire pour chaque employé de 100€.
+    UPDATE employes SET salaire = salaire+100;
+
+8. Afficher le nombre de services (différents).
+    SELECT COUNT(DISTINCT service) FROM employes;
+
+9. Afficher les informations de l'employé du service commercial gagnant le salaire le plus élevé.
+    SELECT prenom, nom, service FROM employes WHERE salaire = (SELECT MAX(salaire) FROM employes WHERE service = 'commercial');
+
+10. Afficher l'employé ayant été embauché en dernier.
+    SELECT * FROM employes WHERE date_embauche = (SELECT MAX(date_embauche) FROM employes);
+
+
+<!------------------------------------ CREATION DB BIBLIOTHEQUE ------------------------------->
+CREATE DATABASE IF NOT EXISTS bibliotheque ;
+USE bibliotheque ;
+CREATE TABLE abonne (
+id_abonne INT(3) NOT NULL AUTO_INCREMENT,
+prenom VARCHAR(20) NOT NULL,
+PRIMARY KEY (id_abonne)
+) ENGINE=InnoDB ;
+CREATE TABLE emprunt (
+id_emprunt INT(3) NOT NULL AUTO_INCREMENT,
+id_livre INT(3) DEFAULT NULL,
+id_abonne INT(3) DEFAULT NULL,
+date_sortie DATE NOT NULL,
+date_rendu DATE DEFAULT NULL,
+PRIMARY KEY (id_emprunt)
+) ENGINE=InnoDB ;
+CREATE TABLE livre (
+id_livre INT(3) NOT NULL AUTO_INCREMENT,
+auteur VARCHAR(30) NOT NULL,
+titre VARCHAR(30) NOT NULL,
+PRIMARY KEY (id_livre)
+) ENGINE=InnoDB ;
+
+<!------------------ CREATION DES CLEFS ETRANGERES ----------------->
+ALTER TABLE emprunt ADD FOREIGN KEY ( id_livre ) REFERENCES bibliotheque.livre (id_livre);
+ALTER TABLE emprunt ADD FOREIGN KEY ( id_abonne ) REFERENCES bibliotheque.abonne (id_abonne);
+
+INSERT INTO abonne (id_abonne, prenom) VALUES
+(1, 'Guillaume'),
+(2, 'Benoit'),
+(3, 'Chloe'),
+(4, 'Laura');
+
+INSERT INTO livre (id_livre, auteur, titre) VALUES
+(100, 'GUY DE MAUPASSANT', 'Une vie'),
+(101, 'GUY DE MAUPASSANT', 'Bel-Ami '),
+(102, 'HONORE DE BALZAC', 'Le père Goriot'),
+(103, 'ALPHONSE DAUDET', 'Le Petit chose'),
+(104, 'ALEXANDRE DUMAS', 'La Reine Margot'),
+(105, 'ALEXANDRE DUMAS', 'Les Trois Mousquetaires');
+
+INSERT INTO emprunt (id_emprunt, id_livre, id_abonne, date_sortie, date_rendu) VALUES
+(1, 100, 1, '2014-12-17', '2014-12-18'),
+(2, 101, 2, '2014-12-18', '2014-12-20'),
+(3, 100, 3, '2014-12-19', '2014-12-22'),
+(4, 103, 4, '2014-12-19', '2014-12-22'),
+(5, 104, 1, '2014-12-19', '2014-12-28'),
+(6, 105, 2, '2015-03-20', '2015-03-26'),
+(7, 105, 3, '2015-06-13', NULL),
+(8, 100, 2, '2015-06-15', NULL);
+
+
+
+Quels sont les titres des livres n'ayant pas été rendus à la bibliothèque ?
+
+1/ SELECT id_livre FROM emprunt WHERE date_rendu IS NULL
+2/ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE date_rendu IS NULL)
+
+Nous aimerions connaitre le n° (id) de(s) livre(s) que Chloé a emprunté à la bibliothèque : 
+
+1/ SELECT id_livre FROM emprunt WHERE id_abonne = 3
+2/ SELECT titre FROM livre WHERE id_livre IN (SELECT id_livre FROM emprunt WHERE id_abonne = 3)
+
+Afficher les prénoms des abonnés ayant emprunté un livre le 19/12/2014 : 
+
+1/ SELECT id_abonne FROM emprunt WHERE date_sortie = '2014-12-19'
+2/ SELECT prenom FROM abonne WHERE id_abonne IN (SELECT id_abonne FROM emprunt WHERE date_sortie = '2014-12-19')
+ATTENTION le mot clef IN permet de sortir (au contraire de =) plusieurs résultats
+
+Afficher la liste des abonnés ayant déjà emprunté un livre d'Alphonse DAUDET
+1/ SELECT id_livre FROM livre WHERE auteur = 'Alphonse DAUDET'
+2/ SELECT id_abonne FROM emprunt WHERE id_livre IN (SELECT id_livre FROM livre WHERE auteur = 'Alphonse DAUDET'); 
+<!--  soit SELECT id_abonne FROM emprunt WHERE id_livre IN (103)  -->
+3/ SELECT prenom FROM abonne WHERE id_abonne IN(SELECT id_abonne FROM emprunt WHERE id_livre IN (SELECT id_livre FROM livre WHERE auteur = 'Alphonse DAUDET'));
+<!--  soit SELECT prenom FROM abonne WHERE id_abonne IN (4) -->
